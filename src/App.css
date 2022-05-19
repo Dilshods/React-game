@@ -1,0 +1,156 @@
+.App{
+  padding: 0 20px;
+}
+.content {
+  min-height: calc(100vh - 70px - 70px);
+}
+
+h1 {
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 2vmin;
+  font-size: var(--main-title-font-size);
+}
+
+#board {
+  display: grid;
+  grid-template-columns: repeat(3, 20vmin);
+  grid-template-rows: repeat(3, 20vmin);
+  grid-gap: 1vmin;
+  margin: 2vmin 0;
+}
+
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10vmin;
+  color: var(--accent-color);
+  background: var(--primary-gradient);
+  border: var(--default-primary-border);
+  border-radius: var(--default-border-radius);
+  outline: none;
+  box-shadow: var(--box-shadow);
+}
+
+.cell:active,
+.cell:hover,
+.cell.winner {
+  cursor: pointer;
+  color: var(--content-background-color);
+  background: var(--primary-highlight-gradient);
+}
+
+.cell-content {
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  transition: width var(--selection-animation-duration),
+    height var(--selection-animation-duration);
+}
+
+.cell-content.populated {
+  width: 12vmin;
+  height: 12vmin;
+}
+
+#modal-overlay {
+  display: none;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: var(--modal-overlay-color);
+}
+
+#modal-overlay.modal-open {
+  display: grid;
+}
+
+#game-result-modal {
+  display: grid;
+  grid-row-gap: 76vmin;
+
+  --modal-items-border-radius: 1vmin;
+}
+
+#result-container {
+  display: flex;
+  align-items: flex-end;
+}
+
+#winner-container {
+  margin-bottom: 4vmin;
+  width: 30vmin;
+  height: 8vmin;
+  font-size: var(--main-title-font-size);
+  font-weight: bold;
+  color: var(--primary-saturated);
+  background: var(--accent-color);
+  border: var(--default-accent-border);
+  box-shadow: var(--box-shadow);
+  border-radius: var(--modal-items-border-radius);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#new-game-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 2.5vmin;
+}
+
+#new-game-container > button {
+  font-size: 3vmin;
+  padding: 1.5vmin;
+  color: var(--accent-color);
+  background: var(--primary-gradient );
+  border: var(--default-primary-border);
+  border-radius: var(--modal-items-border-radius);
+  outline: none;
+  box-shadow: var(--box-shadow);
+}
+
+#new-game-container > button:hover,
+#new-game-container > button:active {
+  color: var(--content-background-color);
+  cursor: pointer;
+  background: var(--primary-highlight-gradient);
+}
+
+
+:root {
+  --background-light-color: #d60e1f;
+  --background-dark-color: #d60e1f;
+  --content-background-color:#0728cf ;
+  --primary-color: rgb(242, 252, 245);
+  --primary-saturated: #2a0bef;
+  --primary-saturated-brighter: #0728cf;
+  --accent-color: #f4e80a;
+  --accent-darker: #eee;
+  --box-shadow-color: rgba(0, 0, 0, 0.75);
+  
+
+  --main-background-gradient: linear-gradient(
+    to right,
+    var(--background-light-color) 0%,
+    var(--background-light-color) 100%
+  );
+  
+  --primary-highlight-gradient: linear-gradient(
+    to right,
+    var(--primary-brighter) 0%,
+    var(--primary-saturated-brighter) 100%
+  );
+  --box-shadow: 0 1vmin 2vmin -1vmin rgba(169, 150, 150, 0.75);
+  --default-border-radius: 7vmin;
+  --default-primary-border: 1.25vmin solid var(--primary-color);
+  --default-accent-border: 0.25vmin solid var(--accent-darker);
+  --main-title-font-size: 4vmin;
+
+  --selection-animation-duration: 350ms;
+}
